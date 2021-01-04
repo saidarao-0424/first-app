@@ -16,7 +16,7 @@
 
 	<properties>
 		<java.version>1.8</java.version>
-		<image-registry>registry.hub.docker.com</image-registry>
+		<image-registry>registry.hub.docker.com/saidarao0424</image-registry>
 	</properties>
 
 	<dependencies>
@@ -73,7 +73,7 @@
 						<image>openjdk:alpine</image>
 					</from>
 					<to>
-						<image>registry.hub.docker.com/saidarao0424/${project.artifactId}:${project.version}</image>
+						<image>${image-registry}/${project.artifactId}:${project.version}</image>
 					</to>
 					<auth>
 						<username>saidarao0424</username>
