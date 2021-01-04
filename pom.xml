@@ -16,6 +16,7 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+		<image-registry>registry.hub.docker.com</image-registry>
 	</properties>
 
 	<dependencies>
@@ -62,6 +63,23 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>jib-maven-plugin</artifactId>
+				<version>1.8.0</version>
+				<configuration>
+					<from>
+						<image>openjdk:alpine</image>
+					</from>
+					<to>
+						<image>registry.hub.docker.com/saidarao0424/${project.artifactId}:${project.version}</image>
+					</to>
+					<auth>
+						<username>saidarao0424</username>
+						<password>08nF1a0424</password>
+					</auth>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
