@@ -1,24 +1,15 @@
 server:
   port: 9090
 spring:
-  application:
-    name: first-app
   datasource:
-    platform: postgres
-    url: jdbc:postgresql://localhost:5432/first-app
-    username: postgres
-    password: postgres
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:mem:test
+    username: sa
+    password:
   jpa:
-    database: POSTGRESQL
-    generate-ddl: true
+    database: H2
     hibernate:
       ddl-auto: create-drop
-    properties:
-      hibernate:
-        jdbc:
-          lob:
-            non_contextual_creation: true
-    show-sql: true
 
 logging:
   level:

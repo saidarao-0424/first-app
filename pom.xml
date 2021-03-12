@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.saida.sample</groupId>
 	<artifactId>first-app</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<name>first-app</name>
 	<description>Demo project for Spring Boot</description>
 
@@ -35,9 +35,9 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-			<scope>runtime</scope>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>1.4.190</version>
 		</dependency>
 
 		<dependency>
