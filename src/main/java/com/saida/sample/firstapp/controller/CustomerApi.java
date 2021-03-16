@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequestMapping("/api/v1/customers")
+@RequestMapping(value = "/api/v1/customers")
 @Tag(name = "Customer API", description = "the Customer API")
 @SecurityScheme(
         name = "basicAuth", // can be set to anything
@@ -26,7 +26,7 @@ import java.util.List;
 )
 public interface CustomerApi {
 
-    @PostMapping(path = "/create", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping()
     @Operation(summary = "Creates Customer with given body", security = @SecurityRequirement(name = "basicAuth"))
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Customer Created successfully",
@@ -35,7 +35,7 @@ public interface CustomerApi {
     public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer);
 
 
-    @PutMapping(path = "/update", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping()
     @Operation(summary = "Updates Customer with given body", security = @SecurityRequirement(name = "basicAuth"))
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Customer Updated successfully",
@@ -43,7 +43,7 @@ public interface CustomerApi {
                             schema = @Schema(implementation = Customer.class))})})
     public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer);
 
-    @DeleteMapping(path = "/delete/{id}")
+    @DeleteMapping(path = "/{id}")
     @Operation(summary = "Deletes Customer with given id", security = @SecurityRequirement(name = "basicAuth"))
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Customer Deleted successfully",
@@ -63,7 +63,7 @@ public interface CustomerApi {
                     content = @Content)})
     public Customer getCustomer(@PathVariable Integer id);
 
-    @GetMapping(path = "/list")
+    @GetMapping()
     @Operation(summary = "List all Customers", security = @SecurityRequirement(name = "basicAuth"))
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "successful operation",

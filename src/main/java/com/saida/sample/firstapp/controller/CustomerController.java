@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-
 public class CustomerController extends AbstractController<Customer> implements CustomerApi {
 
     @Autowired
