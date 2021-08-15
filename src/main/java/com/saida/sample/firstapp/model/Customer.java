@@ -15,11 +15,17 @@ public class Customer implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "NAME", length = 100)
-    private String name;
+    @Column(name = "FIRST_NAME", length = 100)
+    private String firstName;
+
+    @Column(name = "LAST_NAME", length = 100)
+    private String lastName;
 
     @Column(name = "EMAIL", length = 50)
     private String email;
+
+    @Column(name = "CONTACT_NUM", length = 12)
+    private String contactNum;
 
     @Column(name = "ADDRESS", length = 200)
     private String address;
@@ -28,9 +34,5 @@ public class Customer implements Serializable {
         super();
     }
 
-    public Customer(String name, String email, String address) {
-        this.name = name;
-        this.email = email;
-        this.address = address;
-    }
+
 }

@@ -4,6 +4,7 @@ import com.saida.sample.firstapp.model.Customer;
 import com.saida.sample.firstapp.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 public class CustomerController extends AbstractController<Customer> implements CustomerApi {
 
     @Autowired
@@ -29,8 +31,8 @@ public class CustomerController extends AbstractController<Customer> implements 
     }
 
     @Override
-    public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer) {
-        Customer dbCustomer = service.updateCustomer(customer);
+    public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer, Integer id) {
+        Customer dbCustomer = service.updateCustomer(customer,id);
         return this.created(toCustomerUri(dbCustomer.getId()), customer);
     }
 

@@ -1,5 +1,6 @@
 package com.saida.sample.firstapp.service;
 
+import com.saida.sample.firstapp.controller.ResourceNotFoundException;
 import com.saida.sample.firstapp.model.Customer;
 import com.saida.sample.firstapp.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +20,9 @@ public class CustomerService {
         return repository.save(customer);
     }
 
-    public Customer updateCustomer(Customer customer) {
-        return repository.save(customer);
+    public Customer updateCustomer(Customer customer, Integer id) {
+        Optional<Customer> dbCustomer = findCustomer(id);
+        return dbCustomer.map(cust -> repository.save(customer)).orElseThrow(() -> new ResourceNotFoundException("Employee not found"));
     }
 
     public void deleteCustomer(Integer id) {

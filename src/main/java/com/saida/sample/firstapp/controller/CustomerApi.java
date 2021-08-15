@@ -2,16 +2,13 @@ package com.saida.sample.firstapp.controller;
 
 import com.saida.sample.firstapp.model.Customer;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
-import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,11 +16,7 @@ import java.util.List;
 
 @RequestMapping(value = "/api/v1/customers")
 @Tag(name = "Customer API", description = "the Customer API")
-@SecurityScheme(
-        name = "basicAuth", // can be set to anything
-        type = SecuritySchemeType.HTTP,
-        scheme = "basic"
-)
+
 public interface CustomerApi {
 
     @PostMapping()
@@ -35,13 +28,13 @@ public interface CustomerApi {
     public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer);
 
 
-    @PutMapping()
+    @PutMapping(path = "/{id}")
     @Operation(summary = "Updates Customer with given body", security = @SecurityRequirement(name = "basicAuth"))
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Customer Updated successfully",
                     content = {@Content(mediaType = "application/json",
                             schema = @Schema(implementation = Customer.class))})})
-    public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer);
+    public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer, @PathVariable Integer id);
 
     @DeleteMapping(path = "/{id}")
     @Operation(summary = "Deletes Customer with given id", security = @SecurityRequirement(name = "basicAuth"))
